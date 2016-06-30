@@ -1,0 +1,11 @@
+/// Google Webfont import mixin
+/// @group srts
+/// @name google fonts
+///
+/// @example
+/// $google-fonts-url: @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+@function googleFonts {
+  @if variable-exists(google-fonts-url) {
+    @import url($google-fonts-url);
+  }
+}

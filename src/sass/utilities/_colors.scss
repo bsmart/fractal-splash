@@ -1,0 +1,46 @@
+/// Color names with Sass maps
+/// @group srts
+///
+/// @type Map
+/// @prop {Color} gray [#e8e8e8]
+/// @prop {Color} gray:dark [#2d2d2d]
+/// @prop {Color} green [#75a784]
+/// @prop {Color} green:dark [#385741]
+/// @prop {Color} black [#000]
+/// @prop {Color} white [#fff]
+///
+/// @example scss - We can then use just palette($palette-name) to access the base color for a palette.
+/// a {
+///     color: palette(gray);
+///     &:hover {
+///         color: palette(gray, dark);
+///     }
+/// }
+///
+/// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+
+$palettes: (
+  gray: (
+    base: #e8e8e8,
+    dark: #2d2d2d,
+    light: #637182,
+    lighter: #B0B8C3
+  ),
+  green: (
+    base: #75a784,
+    dark: #385741,
+    darker: darken(#385741, 3)
+  ),
+  black: (
+    base: #000
+  ),
+  white: (
+    base: #fff
+  ),
+  blue: (
+    base: #59C0E6
+  ),
+  overlay: (
+    base: rgba(45,45,45,0.9)
+  )
+);

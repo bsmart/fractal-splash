@@ -1,0 +1,23 @@
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+%fontawesome {
+  color: palette(white);
+  font-size: rem(18, $context: 16);
+  display: inline-block;
+  @include padding(.8);
+  opacity: 0.6;
+  transition: opacity .3s ease;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}

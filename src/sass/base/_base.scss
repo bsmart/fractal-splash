@@ -1,0 +1,83 @@
+@viewport {
+  width: device-width;
+}
+
+* {
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  background-color: palette(white);
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  color: palette(white);
+  text-rendering: optimizeLegibility;
+  height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    color: red;
+  }
+}
+
+html {
+  @include define-type-sizing;
+
+  @include typeface(body);
+}
+
+h1, h2, h3, h4 {
+  @include typeface(headings);
+
+  color: palette(white);
+}
+
+h1 {
+  @include typeset(heading-1);
+}
+
+h2 {
+  @include typeset(heading-2);
+}
+
+h3 {
+  @include typeset(heading-3);
+}
+
+h4 {
+  @include typeset(heading-3);
+}
+
+p {
+  @include typeset(p);
+}
+
+a {
+  @include typeface(link);
+  @include typeset(link);
+  background: transparent;
+  color: palette(blue);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color .2s;
+  &:focus, &:active {
+    outline:0;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}

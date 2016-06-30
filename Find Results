@@ -1,0 +1,60 @@
+FSearching 161 files for "gray"
+
+/Users/brittany/Sites/safe-routes/node_modules/font-awesome/scss/_core.scss:
+    8    text-rendering: auto; // optimizelegibility throws things off #1094
+    9    -webkit-font-smoothing: antialiased;
+   10:   -moz-osx-font-smoothing: grayscale;
+   11
+   12  }
+
+/Users/brittany/Sites/safe-routes/node_modules/font-awesome/scss/_mixins.scss:
+    8    text-rendering: auto; // optimizelegibility throws things off #1094
+    9    -webkit-font-smoothing: antialiased;
+   10:   -moz-osx-font-smoothing: grayscale;
+   11
+   12  }
+
+/Users/brittany/Sites/safe-routes/node_modules/sass-lint/tests/sass/variable-for-property.scss:
+   34  // Issue #714 - !important and spaces were classed as erroneous value types
+   35  .t-neutral {
+   36:   color: $gray-chateau !important;
+   37  }
+   38
+
+/Users/brittany/Sites/safe-routes/src/sass/base/_base.scss:
+   29    background-attachment: fixed;
+   30    background-size:  cover;
+   31:   color: palette(gray);
+   32    @include mq(map-get($breakpoints, medium)) {
+   33      @include image-2x('../img/banner-large@2x.jpg', 100%, 100%);
+
+/Users/brittany/Sites/safe-routes/src/sass/libs/_normalize.scss:
+  125  // =============================================================================
+  126
+  127: // 1. Remove the gray background color from active links in IE 10.
+  128  // 2. Addresses outline displayed oddly in Chrome
+  129  // 3. Improves readability when focused and also mouse hovered in all browsers
+
+/Users/brittany/Sites/safe-routes/src/sass/utilities/_colors.scss:
+    3  ///
+    4  /// @type Map
+    5: /// @prop {Color} gray [#e8e8e8]
+    6: /// @prop {Color} gray:dark [#2d2d2d]
+    7  /// @prop {Color} green [#75a784]
+    8  /// @prop {Color} green:dark [#385741]
+    .
+   12  /// @example scss - We can then use just palette($palette-name) to access the base color for a palette.
+   13  /// a {
+   14: ///     color: palette(gray);
+   15  ///     &:hover {
+   16: ///         color: palette(gray, dark);
+   17  ///     }
+   18  /// }
+   ..
+   21
+   22  $palettes: (
+   23:   gray: (
+   24      base: #e8e8e8,
+   25      dark: #2d2d2d,
+
+10 matches across 6 files

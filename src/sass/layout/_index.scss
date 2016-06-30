@@ -1,0 +1,93 @@
+// @source http://smacss.com/book/type-layout
+// .header, .sidebar, body, footer
+// Layout Rules
+//
+// Layout styles can also be divided into major and minor styles based on
+// reuse. Major layout styles such as header and footer are traditionally
+// styled using ID selectors but take the time to think about the elements
+// that are common across all components of the page and use class selectors
+// where appropriate.
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+    @include mq(map-get($breakpoints, medium)) {
+      max-width: 1200px;
+    }
+
+  &__hero {
+    max-width: 90%;
+    @include margin(1 auto 0);
+
+    @include mq(map-get($breakpoints, medium)) {
+      @include margin(2 auto 0);
+    }
+
+    &:before {
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      z-index: z(background-img);
+
+      @include image-2x("../img/bg-small@2x.jpg", 100%, 100%);
+
+      background-image: url("../img/bg-small.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include mq(map-get($breakpoints, medium)) {
+        @include image-2x("../img/bg-large@2x.jpg", 100%, 100%);
+
+        background-image: url("../img/bg-large.jpg");
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: z(filter-dark);
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100vh;
+    }
+
+    .intro {
+      @include padding(1);
+
+      text-align: center;
+
+      @include mq(map-get($breakpoints, medium)) {
+        text-align: left;
+      }
+
+
+      &__headline {
+        font-size: map-get($font-size, xl);
+        @include mq(map-get($breakpoints, medium)) {
+          font-size: map-get($font-size, xxl);
+        }
+      }
+
+      &__description {
+        font-size: map-get($font-size, l);
+        margin-top: 0;
+        opacity: 0.8;
+        @include mq(map-get($breakpoints, medium)) {
+          font-size: map-get($font-size, xl);
+        }
+      }
+
+      &__buttonContainer {
+        @include margin(2 0);
+      }
+    }
+  }
+}

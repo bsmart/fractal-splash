@@ -1,0 +1,213 @@
+// Variables
+
+// Configurations
+
+// $fix-mqs
+//
+// Define width for browsers w/out media query support
+//
+// $fix-mqs - {boolean}
+// @source  - http://jakearchibald.github.com/sass-ie/
+
+$fix-mqs:                     false !default;
+
+// $old-ie
+//
+// Turn on/off IE specific styles
+//
+// $old-ie - {boolean}
+// @source  - http://jakearchibald.github.com/sass-ie/
+
+$old-ie:                      false !default;
+
+
+/// Define major breakpoints - here are no common breakpoints; examples based on the official Sass styleguide You'll need to define your own breakpoints to suit your design
+/// @group srts
+///
+/// @type Map
+/// @prop {Breakpoints} xsmall [null]
+/// @prop {Breakpoints} small [480]
+/// @prop {Breakpoints} medium [768]
+/// @prop {Breakpoints} large [1024]
+/// @prop {Breakpoints} xlarge [1280]
+$breakpoints: (
+  xsmall:                     null,
+  small:                      30em,
+  medium:                     48em,
+  large:                      64em,
+  xlarge:                     80em,
+);
+
+/// Define z-indexes for various elements
+/// @group srts
+///
+/// @type Map
+/// @prop {z-index} overlay [9000]
+/// @prop {z-index} dropdown [8000]
+/// @prop {z-index} nav [7000]
+/// @prop {z-index} header [6000]
+/// @prop {z-index} footer [5000]
+/// @prop {z-index} pseduo [4000]
+/// @prop {z-index} default [1]
+/// @prop {z-index} bottomless-pit [-1000]
+///
+/// @link http://www.sitepoint.com/using-sass-maps/
+$zindex: (
+  overlay:                    9000,
+  dropdown:                   8000,
+  nav:                        7000,
+  header:                     6000,
+  footer:                     5000,
+  background-img:             -100,
+  filter-dark:                -1,
+  pseduo:                     4000,
+  default:                    1,
+  bottomless-pit:             -10000
+);
+
+$typey-debug: false;
+$typey-debug-color: red;
+
+/// Define typey unit
+/// @group typey
+$base-unit: rem;
+
+/// Base font size
+/// @group typey
+$base-font-size:    16px;
+
+/// Base line height
+/// @group typey
+$base-line-height:  24px;
+
+/// Approach rhythm or ratio
+/// @group typey
+$line-height-method: ratio;
+
+/// Set base ratio
+/// @group typey
+$base-line-height-ratio: 1.5;
+
+/// Define font sizes
+/// @group typey
+///
+/// @type Map
+/// @prop {length} s [32px]
+/// @prop {length} m [24px]
+/// @prop {length} l [16px]
+/// @prop {length} xl [12px]
+///
+/// @example
+/// h1 {
+///   font-size: size(xl)
+/// }
+$font-size: (
+  xxl:  60px,
+  xl:   32px,
+  l:    24px,
+  m:    16px,
+  s:    12px,
+);
+
+/// Define font weight
+/// @group typey
+///
+/// @prop {length} bold [700] - bold
+/// @prop {length} normal [400] - normal
+/// @prop {length} lighter [200] - lighter
+///
+/// @example
+/// strong {
+///  font-weight: weight(bold)
+/// }
+$font-weight: (
+  bold:    700,
+  normal:  400,
+  lighter: 200
+);
+
+/// @name headings font-family
+/// @group typey
+$ptsans: 'Open Sans', Helvetica, sans-serif;
+
+/// @name body font-family
+/// @group typey
+$roboto: 'Roboto', Helvetica, sans-serif;
+
+/// Define typefaces
+/// @group typey
+///
+/// @prop {length} headings [font-family: $font, letter-spacing: px] - Heading properties
+/// @prop {length} body [font-family: $font, letter-spacing: px] - Body properties
+$typefaces: (
+  headings: (
+    font-family: $ptsans,
+    letter-spacing: -.19px
+  ),
+  body: (
+    font-family: $roboto,
+    letter-spacing: -.3px
+  ),
+  link: (
+    font-family: $roboto,
+    letter-spacing: -.2px
+  ),
+  button: (
+    font-family: $roboto,
+    letter-spacing: -.2px
+  ),
+  input: (
+    font-family: $roboto
+  )
+);
+
+/// Define typestyles
+/// @group typey
+///
+/// @prop {length} heading-1 [font-size | line-height | weight | case ] - H1 properties
+/// @prop {length} heading-2 [font-size | line-height | weight | case ] - H2 properties
+/// @prop {length} heading-3 [font-size | line-height | weight | case ] - H3 properties
+/// @prop {length} heading-4 [font-size | line-height | weight | case ] - H4 properties
+/// @example @include typeset(heading-1)
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 1.25,
+    weight: bold
+  ),
+  heading-2: (
+    font-size: l,
+    line-height: 1.25,
+    weight: bold
+  ),
+  heading-3: (
+    font-size: m,
+    line-height: 1.25,
+    weight: normal
+  ),
+  heading-4: (
+    font-size: s,
+    line-height: 1.25,
+    weight: normal
+  ),
+  p: (
+    font-size: m,
+    line-height: 1.2,
+    weight: normal
+  ),
+  button: (
+    font-size: m,
+    line-height: 1,
+    weight: normal
+  ),
+  input: (
+    font-size: m,
+    line-height: 1,
+    weight: normal
+  ),
+  link: (
+    weight: bold,
+  )
+);
+
+$border-radius: 0.125rem;

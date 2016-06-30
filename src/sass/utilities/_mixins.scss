@@ -1,0 +1,244 @@
+/// Resets default list styling
+/// @group srts
+///
+///
+/// @example - `@include reset-list`
+
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/// Horizontally center a block element
+/// @group srts
+///
+/// @example scss - Basic Usage Sass
+///    .center-my-block-thingie {
+///        @include margin-auto();
+///    }
+///
+/// @example scss - Basic Usage CSS Output
+///    .center-my-block-thingie {
+///        margin-left: auto;
+///        margin-right: auto;
+///    }
+
+@mixin margin-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/// Create pseduo-classes for `:hover`, `:active`, and `:focus`.
+/// @group srts
+///
+/// @example - `@include hover`
+///
+/// Styleguide 10.3
+
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus { @content; }
+}
+
+/// Feature Detection
+/// @group srts
+///
+/// @example - `@include supported($feature)`
+/// @example - `@include not-supported($feature)`
+
+@mixin supported($feature) {
+  .#{$feature} & {
+    @content;
+  }
+}
+
+/// Feature Detection
+/// @group srts
+///
+/// @example - `@include not-supported($feature)`
+
+@mixin not-supported($feature) {
+  .no-js &,
+  .no-#{$feature} & {
+    @content;
+  }
+}
+
+/// Media Queries - Allows you to use inline media queries. Includes options for `$fix-mqs`.
+///
+///
+/// $breakpoint - Desired breakpoint. Can be variable or unit.
+/// $query - Defaults to `min-width`.
+/// $type - Defaults to `screen`.
+
+@mixin mq($breakpoint, $query: 'min-width', $type: 'screen') {
+  @if $fix-mqs {
+    @if $fix-mqs >= $breakpoint { @content; }
+  } @else {
+    @media #{$type} and (#{$query}: #{$breakpoint}) { @content; }
+  }
+}
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
+/// Clearfix - Nicolas Gallagher's micro clearfix hack
+///
+///
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
+
+/// Hide Text
+///
+/// @example - `@include hide-text`
+
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/// Hidden - Hide from both screenreaders and browsers
+///
+/// @example - `@include hidden`
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/// Visually Hidden - Hide only visually, but have it available for screenreaders
+///
+/// @example - `@include visuallyhidden`
+
+@mixin visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  /// Extends the .visuallyhidden class to allow the element to be focusable
+  /// when navigated to via the keyboard: h5bp.com/p
+
+  &.focusable {
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto;
+    }
+  }
+}
+
+/// Invisible - Hide visually and from screenreaders, but maintain layout
+///
+/// @example - `@include invisible`
+
+@mixin invisible { visibility: hidden; }
+
+
+/// Border Radius - Hide visually and from screenreaders, but maintain layout
+///
+/// @example - `@include border-radius`
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+   -webkit-border-top-left-radius: $radius;
+   border-top-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+     -webkit-border-top-right-radius: $radius;
+     border-top-right-radius: $radius;
+     background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+   -webkit-border-bottom-left-radius: $radius;
+   border-bottom-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+     -webkit-border-top-left-radius: $radius;
+     border-top-left-radius: $radius;
+     background-clip: padding-box;
+}
+
+/// Retina Images - Hide visually and from screenreaders, but maintain layout
+///
+/// @example - `@include image-2x`
+
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// For adding font icons to elements using CSS pseudo-elements
+// http://jaydenseric.com/blog/fun-with-sass-and-font-icons
+@mixin icon($position: before, $icon: false, $styles: true) {
+    @if $position == both {
+        $position: 'before, &:after';
+    }
+    // Either a :before or :after pseudo-element, or both, defaulting to :before
+    &:#{$position} {
+        @if $icon {
+            // A particular icon has been specified
+            content: "#{map-get($icons, $icon)}";
+        }
+        @if $styles {
+            // Supportive icon styles required
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-family: $font-icon;
+        }
+        // Include any extra rules supplied for the pseudo-element
+        @content;
+    }
+}
