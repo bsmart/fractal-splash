@@ -22,7 +22,7 @@
     @include margin(1 auto 0);
 
     @include mq(map-get($breakpoints, medium)) {
-      @include margin(2 auto 0);
+      @include margin(3 auto 0);
     }
 
     &:before {
